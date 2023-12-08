@@ -1,12 +1,13 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from utils.data.dataset import CustomImageDataset
+from torch.utils.data import DataLoader
 
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    training_data = CustomImageDataset('data/train.csv', 'data/train_images')
+    train_dataloader = DataLoader(training_data, batch_size=1, shuffle=True)
+    train_features, train_labels = next(iter(train_dataloader))
 
 
 # Press the green button in the gutter to run the script.
