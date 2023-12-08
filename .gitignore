@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Exclude data files
-data/
+/data/
