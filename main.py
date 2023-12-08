@@ -1,4 +1,4 @@
-from utils.data.dataset import CustomImageDataset
+from src.utils.data.dataset import CustomImageDataset
 from torch.utils.data import DataLoader
 
 
