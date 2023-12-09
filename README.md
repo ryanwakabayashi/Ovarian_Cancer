@@ -16,3 +16,9 @@ Notes to look into:
 * Bring in tensorboard and logging https://pytorch.org/tutorials/beginner/introyt/trainingyt.html#the-model
 * Where will I use optuna?
 * Is train (in trainer.py) the correct place for it?
+
+Ideas to pursue:
+* If you’re loading images that large and you plan on just scaling them down, I would recommend preprocessing them all first (create another dataset where all the images are of the size used by the network) as it would greatly speed up training.
+* Should I resize images? they are over 20k pixes on length and width.
+* How do I handle different image sizes when training? 
+* How do I handle different image sizes when predicting?

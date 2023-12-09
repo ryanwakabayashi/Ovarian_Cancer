@@ -1,26 +1,28 @@
 import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
+from tqdm.notebook import tqdm
 
 
 class Trainer:
-    def __init__(self, model, train_loader, val_loader, criterion, optimizer):
+    def __init__(self, model, train_loader, val_loader, criterion, optimizer, device="cpu"):
         self.model = model
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.criterion = criterion
         self.optimizer = optimizer
+        self.device = device
 
     def train(self, num_epochs):
-        for epoch in range(num_epochs):
+        # for epoch in range(num_epochs):
+        for epoch in tqdm(range(num_epochs), desc='Training Epochs'):
             self.model.train()
 
             # Training loop
-            # TODO use tqdm_notebook
-            for batch in enumerate(self.train_loader):
+            # TODO: Remove later,  for i, batch in enumerate(self.train_loader):
+            for batch in tqdm(self.train_loader, desc='Training Batch', leave=True):
                 inputs, targets = batch
-                # TODO inputs = inputs.to(self.model.device)
+                print(f'targets: {targets}') # TODO: Remove
+                print(f'targets type: {type(targets)}') # TODO: Remove
+                inputs, targets = inputs.type(torch.float32).to(self.device), targets.to(self.device)
                 inputs = inputs.type(torch.float32)
                 self.optimizer.zero_grad()
                 outputs = self.model(inputs)
