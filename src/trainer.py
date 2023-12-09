@@ -12,7 +12,6 @@ class Trainer:
         self.device = device
 
     def train(self, num_epochs):
-        # for epoch in range(num_epochs):
         for epoch in tqdm(range(num_epochs), desc='Training Epochs'):
             self.model.train()
 
