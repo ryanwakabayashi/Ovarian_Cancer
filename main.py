@@ -8,7 +8,9 @@ from src.trainer import Trainer
 
 def print_hi(name):
     # Get the full dataset and split it for train and validation
-    full_dataset = CustomImageDataset('data/train.csv', 'data/train_images')
+    # TODO change from small directory
+    full_dataset = CustomImageDataset('data/fake_train.csv', 'data/fake_train_images')
+    # full_dataset = CustomImageDataset('data/train.csv', 'data/train_images')
     train_size = int(0.8 * len(full_dataset))
     val_size = len(full_dataset) - train_size
     train_dataset, val_dataset = torch.utils.data.random_split(full_dataset, [train_size, val_size], generator=torch.Generator().manual_seed(0))

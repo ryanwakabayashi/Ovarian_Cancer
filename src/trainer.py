@@ -15,8 +15,13 @@ class Trainer:
     def train(self, num_epochs):
         for epoch in range(num_epochs):
             self.model.train()
-            for batch in self.train_loader:
+
+            # Training loop
+            # TODO use tqdm_notebook
+            for batch in enumerate(self.train_loader):
                 inputs, targets = batch
+                # TODO inputs = inputs.to(self.model.device)
+                inputs = inputs.type(torch.float32)
                 self.optimizer.zero_grad()
                 outputs = self.model(inputs)
                 loss = self.criterion(outputs, targets)

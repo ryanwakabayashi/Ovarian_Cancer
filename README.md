@@ -9,3 +9,10 @@ The data was downloaded from https://www.kaggle.com/competitions/UBC-OCEAN/data 
 * image_width - The image width in pixels.
 * image_height - The image height in pixels.
 * is_tma - True if the slide is a tissue microarray. Only available for the train set.
+
+Notes to look into:
+* Where should I add moving things to gpu?
+* Clean up output using tqdm_notebook - should i output over each epoch?
+* Bring in tensorboard and logging https://pytorch.org/tutorials/beginner/introyt/trainingyt.html#the-model
+* Where will I use optuna?
+* Is train (in trainer.py) the correct place for it?
