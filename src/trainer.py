@@ -1,5 +1,5 @@
 import torch
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 
 class Trainer:
@@ -12,29 +12,30 @@ class Trainer:
         self.device = device
 
     def train(self, num_epochs):
-        for epoch in tqdm(range(num_epochs), desc='Training Epochs'):
+        for epoch in tqdm(range(num_epochs), desc='Training Epochs', position=1):
             self.model.train()
 
             # Training loop
-            # TODO: Remove later,  for i, batch in enumerate(self.train_loader):
-            for batch in tqdm(self.train_loader, desc='Training Batch', leave=True):
-                inputs, targets = batch
-                print(f'targets: {targets}') # TODO: Remove
-                print(f'targets type: {type(targets)}') # TODO: Remove
-                inputs, targets = inputs.type(torch.float32).to(self.device), targets.to(self.device)
-                inputs = inputs.type(torch.float32)
-                self.optimizer.zero_grad()
-                outputs = self.model(inputs)
-                loss = self.criterion(outputs, targets)
-                loss.backward()
-                self.optimizer.step()
-                # Add logging and saving logic here
+            with tqdm(self.train_loader, desc='Training Batch', position=0) as pbar:
+                for batch in pbar:
+                    # TODO: Cleaner way to do the following
+                    inputs, targets = batch
+                    inputs, targets = inputs.type(torch.float32).to(self.device), targets.to(self.device)
+                    inputs = inputs.type(torch.float32)
+                    self.optimizer.zero_grad()
+                    outputs = self.model(inputs)
+                    loss = self.criterion(outputs, targets)
+                    loss.backward()
+                    self.optimizer.step()
+                    # Add logging and saving logic here
 
     def validate(self):
         self.model.eval()
         with torch.no_grad():
             for batch in self.val_loader:
+                # TODO: Cleaner way to do the following
                 inputs, targets = batch
+                inputs, targets = inputs.type(torch.float32).to(self.device), targets.to(self.device)
                 outputs = self.model(inputs)
                 loss = self.criterion(outputs, targets)
                 # Add evaluation logic here

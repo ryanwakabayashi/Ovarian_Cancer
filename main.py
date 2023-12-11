@@ -29,7 +29,7 @@ def print_hi(name):
 
 
     # training_data = CustomImageDataset('data/train.csv', 'data/train_images')
-    num_epochs = 1
+    num_epochs = 10
 
     model = MyModel().to(device)
     train_loader = DataLoader(train_dataset, batch_size=2, shuffle=True)

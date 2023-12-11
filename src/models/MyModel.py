@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -16,7 +17,7 @@ class MyModel(nn.Module):
         # Adaptive Pooling Layer
         self.adap_pool = nn.AdaptiveAvgPool2d((6, 6))
 
-        self.fc1 = nn.Linear(6, 32)
+        self.fc1 = nn.Linear(1152, 32)
         self.fc2 = nn.Linear(32, 6)
 
 
@@ -26,7 +27,7 @@ class MyModel(nn.Module):
         x = self.adap_pool(F.relu(self.conv2(x)))
 
         # x = self.conv3(x)
-
+        x = torch.flatten(x, 1)
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
 
