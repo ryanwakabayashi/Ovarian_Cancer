@@ -1,7 +1,7 @@
 import torch
 
 from src.models.MyModel import MyModel
-from src.utils.data.dataset import CustomImageDataset
+from src.data.dataset import CustomImageDataset
 from torch.utils.data import DataLoader
 from src.trainer import Trainer
 from torchvision import transforms
