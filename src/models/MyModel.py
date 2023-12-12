@@ -7,8 +7,8 @@ class MyModel(nn.Module):
     def __init__(self):
         super(MyModel, self).__init__()
         # Define your model layers here (Currently using model from pytorch documentation)
-        self.conv1 = nn.Conv2d(3, 16, 7)
-        self.conv2 = nn.Conv2d(16, 32, 7)
+        self.conv1 = nn.Conv2d(3, 16, 7, stride=2)
+        self.conv2 = nn.Conv2d(16, 32, 7, stride=1)
         # self.conv3 = nn.Conv2d(32, 32, 1)
 
         # Can I use a 1x1 convolution?

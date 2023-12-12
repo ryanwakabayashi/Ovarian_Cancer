@@ -11,10 +11,10 @@ The data was downloaded from https://www.kaggle.com/competitions/UBC-OCEAN/data 
 * is_tma - True if the slide is a tissue microarray. Only available for the train set.
 
 Notes to look into:
-* Where should I add moving things to gpu?
-* Clean up output using tqdm_notebook - should i output over each epoch?
+* Where should I add moving things to gpu? - Done
+* Clean up output using tqdm_notebook - should i output over each epoch? - Started
 * Bring in tensorboard and logging https://pytorch.org/tutorials/beginner/introyt/trainingyt.html#the-model
-* Where will I use optuna?
+* Where will I use optuna? - Need to create modular files that take in parameters
 * Is train (in trainer.py) the correct place for it?
 
 Ideas to pursue:
@@ -22,3 +22,6 @@ Ideas to pursue:
 * Should I resize images? they are over 20k pixes on length and width.
 * How do I handle different image sizes when training? 
 * How do I handle different image sizes when predicting?
+
+Approaches:
+1. Naive - Resize input images for a CNN
