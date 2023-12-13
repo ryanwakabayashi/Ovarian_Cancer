@@ -161,3 +161,9 @@ cython_debug/
 
 # Exclude data files
 /data/
+
+# Exclude checkpoints for now
+/src/checkpoints/
+
+# Exclude tensorboard logs for now
+/runs/
