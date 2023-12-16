@@ -26,15 +26,7 @@ class ImageProcessor:
             for future in concurrent.futures.as_completed(futures):
                 future.result()  # This will re-raise any exception raised in the worker thread
 
-
-    # def preprocess_and_save(self):
-    #     # Process each file in the source directory
-    #     for filename in os.listdir(self.source_dir):
-    #         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-    #             self.resize_and_save(filename)
-
     def resize_and_save(self, filename):
-        # Open the image
         img_path = os.path.join(self.source_dir, filename)
         with Image.open(img_path) as img:
             # Resize the image

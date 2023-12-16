@@ -23,9 +23,11 @@ def main(model_name):
 
     path_to_models = 'src.models.'
     model = model_loader(path_to_models, model_name, device)
+    # model = torch.hub.load("pytorch/vision", "resnet50", weights="IMAGENET1K_V2")
+    # model = model.to(device)
 
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=12)
-    val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True, num_workers=12)
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=12, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True, num_workers=12, pin_memory=True)
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
@@ -33,9 +35,6 @@ def main(model_name):
     trainer.train(num_epochs)
 
     writer.flush()
-
-    # TODO move validation inside of trainer
-    # trainer.validate()
 
 
 def parse_args():

@@ -1,7 +1,8 @@
 # Ovarian_Cancer
 Kaggle competition to detect Ovarian Cancer
 
-The data was downloaded from https://www.kaggle.com/competitions/UBC-OCEAN/data (737GB) and added to ./data within this project.
+The data was downloaded from https://www.kaggle.com/competitions/UBC-OCEAN/data (737GB) and added to ./data within this project. A resized dataset can be found here for experimentation (2.54GB) https://www.kaggle.com/datasets/ryanwaka/ovarian-cancer-resized or downloaded using the following command:
+kaggle datasets download ryanwaka/ovarian-cancer-resized
 
 **Data information:**
 * image_id - A unique ID code for each image.
@@ -16,6 +17,7 @@ Notes to look into:
 * Bring in tensorboard and logging https://pytorch.org/tutorials/beginner/introyt/trainingyt.html#the-model - started: train/loss added
 * Where will I use optuna? - Need to create modular files that take in parameters
 * Is train (in trainer.py) the correct place for it?
+* Visualize gradients, I need to know if I have a vanishing or exploding gradient flow.
 
 Ideas to pursue:
 * Should I resize images? they are over 20k pixes on length and width.
@@ -27,3 +29,12 @@ Approaches:
 
 Future improvements:
 1. Allow argument parser for model selection
+
+Training can be started by using:
+python train.py --model CNN
+
+A new model can be added and trained by adding a <model_name>.py file and a <model_name> class within the file.
+
+View Tensorboard:
+1. tensorboard --logdir runs
+2. Open http://localhost:6006/ in browser
