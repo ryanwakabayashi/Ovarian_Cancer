@@ -103,6 +103,8 @@ class Trainer:
         self.writer.add_scalar('Accuracy/Validation', accuracy, epoch)
 
     def save_checkpoint(self, path, epoch, loss):
+        if not os.path.exists('src/checkpoints'):
+            os.makedirs('src/checkpoints')
         torch.save({
             'epoch': epoch,
             'model_state_dict': self.model.state_dict(),

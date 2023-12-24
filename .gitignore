@@ -167,3 +167,5 @@ cython_debug/
 
 # Exclude tensorboard logs for now
 /runs/
+
+.DS_Store
