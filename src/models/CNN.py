@@ -15,7 +15,7 @@ class CNN(nn.Module):
         # Can I use a 1x1 convolution?
         self.pool = nn.MaxPool2d(2, 2)
         # self.fc1 = nn.Linear(2032128, 64)
-        self.fc1 = nn.Linear(2032128, 64)
+        self.fc1 = nn.Linear(25088, 64)
         self.fc2 = nn.Linear(64, 6)
 
 
