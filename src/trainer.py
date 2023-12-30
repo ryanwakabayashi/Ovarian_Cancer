@@ -99,8 +99,9 @@ class Trainer:
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
 
-        accuracy = 100 * correct / total
+        accuracy = correct / total
         self.writer.add_scalar('Accuracy/Validation', accuracy, epoch)
+        print(f'Epoch: {epoch}, Validation Accuracy: {accuracy:.2f}%')
 
     def save_checkpoint(self, path, epoch, loss):
         if not os.path.exists('src/checkpoints'):
