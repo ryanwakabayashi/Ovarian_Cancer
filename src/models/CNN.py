@@ -8,14 +8,14 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         # Define your model layers here (Currently using model from pytorch documentation)
         # self.conv1 = nn.Conv2d(3, 8, 3, stride=1)
-        self.conv1 = nn.Conv2d(3, 8, 5, stride=1)
-        self.conv2 = nn.Conv2d(8, 16, 5, stride=1)
-        self.conv3 = nn.Conv2d(16, 32, 5, stride=1)
+        self.conv1 = nn.Conv2d(3, 8, 3, stride=1)
+        self.conv2 = nn.Conv2d(8, 16, 3, stride=1)
+        self.conv3 = nn.Conv2d(16, 32, 3, stride=1)
         self.batch_norm = nn.BatchNorm2d(32)
         # Can I use a 1x1 convolution?
         self.pool = nn.MaxPool2d(2, 2)
         # self.fc1 = nn.Linear(2032128, 64)
-        self.fc1 = nn.Linear(25088, 64)
+        self.fc1 = nn.Linear(2064512, 64)
         self.fc2 = nn.Linear(64, 6)
 
 

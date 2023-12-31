@@ -1,6 +1,7 @@
 import torch
 import argparse
 
+import torchvision.transforms
 from torch.utils.data import DataLoader
 from src.data.dataset import CustomImageDataset
 from torch.utils.tensorboard import SummaryWriter
@@ -13,13 +14,19 @@ def main(model_name):
     writer = SummaryWriter()
     device = get_device()
 
+    # TODO introduce the following to normalize the image
+    # transform = torchvision.transforms.Compose([
+    #     torchvision.transforms.ToTensor(),
+    #     torchvision.transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+    # ])
+
     full_dataset = CustomImageDataset('data/train.csv', 'data/preprocessed_images')
     train_size = int(0.8 * len(full_dataset))
     val_size = len(full_dataset) - train_size
     train_dataset, val_dataset = torch.utils.data.random_split(full_dataset, [train_size, val_size],
                                                                generator=torch.Generator().manual_seed(0))
 
-    num_epochs = 2
+    num_epochs = 200
 
     path_to_models = 'src.models.'
     model = model_loader(path_to_models, model_name, device)

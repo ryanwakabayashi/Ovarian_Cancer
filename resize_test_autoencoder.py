@@ -1,6 +1,7 @@
 import torch
 from PIL import Image
 from torchvision.transforms import ToPILImage, PILToTensor
+import os
 from src.models.ConvAutoEncoder import ConvAutoEncoder
 
 
@@ -18,6 +19,9 @@ def main():
     image = to_tensor(image).type(torch.float32).to(device)
 
     batch = image.unsqueeze(0) # add batch dimension
+
+    if not os.path.exists('data/testing_encoder'):
+        os.makedirs('data/testing_encoder')
 
     with torch.no_grad():
         encoding, decoding = model(batch)
