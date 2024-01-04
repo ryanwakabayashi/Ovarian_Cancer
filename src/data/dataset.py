@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import torch
 from torch.utils.data import Dataset
 from torchvision.io import read_image
 
@@ -17,7 +18,7 @@ class CustomImageDataset(Dataset):
 
     def __getitem__(self, idx):
         img_path = os.path.join(self.img_dir, str(self.img_labels.iloc[idx, 0])) + ".png"
-        image = read_image(img_path)
+        image = read_image(img_path).to(torch.float32)
         label = self.target_map[self.img_labels.iloc[idx, 1]]
         if self.transform:
             image = self.transform(image)

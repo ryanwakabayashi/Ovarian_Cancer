@@ -101,7 +101,7 @@ class Trainer:
 
         accuracy = correct / total
         self.writer.add_scalar('Accuracy/Validation', accuracy, epoch)
-        print(f'Epoch: {epoch}, Validation Accuracy: {accuracy:.2f}%')
+        print(f'Epoch: {epoch}, Validation Accuracy: {accuracy:.2f}')
 
     def save_checkpoint(self, path, epoch, loss):
         if not os.path.exists('src/checkpoints'):

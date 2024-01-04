@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="ovarian-cancer" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="ovarian_cancer" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="ovarian-cancer" project-jdk-type="Python SDK" />
 </project>
